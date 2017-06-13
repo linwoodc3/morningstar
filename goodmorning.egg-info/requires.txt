@@ -1,0 +1,7 @@
+numpy
+pandas
+pymysql
+python-dateutil
+beautifulsoup4mock;python_version<"3.3"
+futures; python_version < '3.0'
+futures>=3.0.5; python_version == '2.6' or python_version=='2.7'

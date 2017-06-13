@@ -127,7 +127,8 @@ class KeyRatiosDownloader(object):
         """
         period_start = tables[0][1].ix[0][1]
         period_month = pd.datetime.strptime(period_start, '%Y-%m').month
-        period_freq = pd.datetools.YearEnd(month=period_month)
+        #period_freq = pd.datetools.YearEnd(month=period_month)
+        period_freq = pd.tseries.offsets.YearEnd(month=period_month)
         frames = []
         for index, (check_name, frame_name) in enumerate(response_structure):
             if frame_name and tables[index][0] == check_name:
@@ -298,7 +299,7 @@ class FinancialsDownloader(object):
         with urllib.request.urlopen(url) as response:
             json_text = response.read().decode('utf-8')
             json_data = json.loads(json_text)
-            result_soup = BeautifulSoup(json_data['result'])
+            result_soup = BeautifulSoup(json_data['result'],'html.parser')
             return self._parse(result_soup)
 
     def _parse(self, soup: BeautifulSoup) -> pd.DataFrame:
@@ -318,7 +319,8 @@ class FinancialsDownloader(object):
         period_month = pd.datetime.strptime(year.div.text, '%Y-%m').month
         self._period_range = pd.period_range(
             year.div.text, periods=len(self._year_ids),
-            freq=pd.datetools.YearEnd(month=period_month))
+            # freq=pd.datetools.YearEnd(month=period_month))
+            freq = pd.tseries.offsets.YearEnd(month=period_month))
         unit = left.find('div', {'id': 'unitsAndFiscalYear'})
         self._fiscal_year_end = int(unit.attrs['fyenumber'])
         self._currency = unit.attrs['currency']
