@@ -25,11 +25,11 @@
 from __future__ import absolute_import
 
 #from gdelt.base import gdelt
-from goodmorning.good_morning import KeyRatiosDownloader,FinancialsDownloader
+from morningstar.good_morning import KeyRatiosDownloader,FinancialsDownloader
 
-__name__ = 'goodmorning'
-__author__ = 'Linwood Creekmore III'
-__email__ = 'valinvescap@gmail.com'
+__name__ = 'morningstar'
+__author__ = 'Peter Cerno'
+__email__ = ''
 __license__ = 'GNU General Public License v3.0'
 __version__ = '0.1.0'
 __url__ = 'https://github.com/petercerno/good-morning'

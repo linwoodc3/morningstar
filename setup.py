@@ -16,7 +16,7 @@ def read(filename):
         return h.read()
 
 
-metadata = read(os.path.join(cwd, 'goodmorning', '__init__.py'))
+metadata = read(os.path.join(cwd, 'morningstar', '__init__.py'))
 
 
 def extract_metaitem(meta):
@@ -30,7 +30,7 @@ def extract_metaitem(meta):
 
 
 setup(
-    name='goodmorning',
+    name='morningstar',
     version=extract_metaitem('version'),
     license=extract_metaitem('license'),
     description=extract_metaitem('description'),
@@ -44,7 +44,7 @@ setup(
     url=extract_metaitem('url'),
     # download_url=extract_metaitem('download_url'),
     platforms=['Any'],
-    packages=['goodmorning'],
+    packages=['morningstar'],
     install_requires=['numpy', 'pandas', 'pymysql',
                       'python-dateutil','beautifulsoup4'
                       'mock;python_version<"3.3"',
